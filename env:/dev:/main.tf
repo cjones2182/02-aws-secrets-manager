@@ -49,8 +49,6 @@ module "rds" {
   engine_version = var.engine_version
   engine = var.engine
   instance_class = var.instance_class
-  username = var.username
-  password = var.password
   web_security_group = module.security-groups.web_security_group
 }
 module "cloudwatch" {
