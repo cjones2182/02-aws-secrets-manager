@@ -1,10 +1,10 @@
 output "rds_secret_arn" {
   description = "arn of rds secret"
-  value = aws_secretsmanager_secret.rds_secret
+  value = aws_secretsmanager_secret.rds_secret.arn
 }
 output "rds_password" {
     description = "password of rds"
-    value = aws_random_password.rds_password.result
+    value = random_password.rds_password.result 
     sensitive = true
 }
 output "rds_username" {
