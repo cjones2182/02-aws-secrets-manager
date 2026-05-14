@@ -61,5 +61,5 @@ module "cloudwatch" {
 }
 module "secrets-manager" {
   source = "../../modules:/secrets-manager:"
-
+environment = var.environment
 }
