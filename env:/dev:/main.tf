@@ -50,6 +50,8 @@ module "rds" {
   engine = var.engine
   instance_class = var.instance_class
   web_security_group = module.security-groups.web_security_group
+  rds_username = var.rds_username
+  rds_password = module.secrets-manager.rds_password
 }
 module "cloudwatch" {
   source = "../../modules:/cloudwatch:"

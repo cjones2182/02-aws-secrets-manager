@@ -27,3 +27,11 @@ variable "web_security_group" {
   description = "web security group"
   type = string
 }
+variable "rds_password" {
+  description = "rds password"
+  type = string
+}
+variable "rds_username" {
+  description = "rds username"
+  type = string
+}

@@ -4,8 +4,8 @@ resource "aws_db_instance" "main-rds" {
   engine               = var.engine
   engine_version       = var.engine_version
   instance_class       = var.instance_class
-  username             = var.username
-  password             = var.password
+  username             = var.rds_username
+  password             = var.rds_password
   skip_final_snapshot  = true
   db_subnet_group_name = "rds_subnet"
   multi_az = true
