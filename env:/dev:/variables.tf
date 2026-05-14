@@ -92,14 +92,16 @@ variable "instance_class" {
   description = "instance class of DB"
   type = string
 }
-variable "username" {
-  description = "username of db"
-  type = string
-}
-variable "password" {
-  description = "password of db"
-  type = string
-}
+
 # ====================================================================================
 # cloudwatch
 # ====================================================================================
+
+# ====================================================================================
+# secrets manager
+# ====================================================================================
+
+variable "rds_username" {
+  description = "rds username"
+  type = string
+}
