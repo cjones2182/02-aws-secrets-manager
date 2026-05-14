@@ -59,3 +59,6 @@ module "cloudwatch" {
   aws_autoscaling_group = module.autoscaling-group.main_autoscaling_group
   rds_database = module.rds.rds_database
 }
+module "secrets-manager" {
+  source = "../../modules:/secrets-manager:"
+}
