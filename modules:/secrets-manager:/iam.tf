@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "rds_login" {
 # actual policy with json attached to get rds secret value 
 # =========================================================================================================
 }
-  resource "aws_secretsmanager_secret_policy" "name" {
+  resource "aws_secretsmanager_secret_policy" "rds_policy" {
     secret_arn = aws_secretsmanager_secret.rds_secret.arn
     policy = data.aws_iam_policy_document.rds_login.json
   }
@@ -39,3 +39,12 @@ data "aws_iam_policy_document" "rds_login" {
     ]
   })
   }
+  # =======================================================================================================
+  # role attach to policy  
+  # =======================================================================================================
+    resource "aws_iam_policy_attachment" "attach-rds-read-policy-to-role" {
+        policy_arn = aws_secretsmanager_secret_policy.rds_policy
+        roles = [aws_iam_role.ec2_role]
+        name = "rds-policy-attachment"
+    }
+   
