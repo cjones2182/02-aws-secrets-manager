@@ -43,8 +43,8 @@ data "aws_iam_policy_document" "rds_login" {
   # role attach to policy  
   # =======================================================================================================
     resource "aws_iam_policy_attachment" "attach-rds-read-policy-to-role" {
-        policy_arn = aws_secretsmanager_secret_policy.rds_policy
-        roles = [aws_iam_role.ec2_role]
+        policy_arn = aws_secretsmanager_secret.rds_secret.arn
+        roles = [aws_iam_role.ec2_role.name]
         name = "rds-policy-attachment"
     }
    # =======================================================================================================
@@ -52,5 +52,5 @@ data "aws_iam_policy_document" "rds_login" {
    # =======================================================================================================
      resource "aws_iam_instance_profile" "ec2_instance_profile" {
        name = "ec2-instance-profile"
-       role = aws_iam_role.ec2_role
-     }
+       role = "ec2-role"
+    }
