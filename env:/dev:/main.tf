@@ -10,7 +10,7 @@ module "vpc" {
   private_subnets    = var.private_subnets
   database_subnets   = var.database_subnets
   igw                = var.igw
-  environment = var.environment
+  environment        = var.environment
 }
 module "security-groups" {
   source                  = "../../modules:/security-groups:"
@@ -25,7 +25,7 @@ module "alb" {
   alb_security_group = [module.security-groups.alb_security_group]
   vpc_id             = module.vpc.vpc_id
   public_subnets     = module.vpc.public_subnets
-  environment = var.environment
+  environment        = var.environment
 }
 module "autoscaling-group" {
   source                = "../../modules:/autoscaling-groups:"
@@ -39,28 +39,28 @@ module "autoscaling-group" {
   public_subnets        = var.public_subnets
   private_subnets       = module.vpc.private_subnets
   main_alb_target_group = [module.alb.main_alb_target_group]
-  environment = var.environment
+  environment           = var.environment
 }
 module "rds" {
-  source = "../../modules:/rds:"
-  allocated_storage = var.allocated_storage
-  database_subnets = module.vpc.database_subnets
-  db_name = var.db_name
-  engine_version = var.engine_version
-  engine = var.engine
-  instance_class = var.instance_class
+  source             = "../../modules:/rds:"
+  allocated_storage  = var.allocated_storage
+  database_subnets   = module.vpc.database_subnets
+  db_name            = var.db_name
+  engine_version     = var.engine_version
+  engine             = var.engine
+  instance_class     = var.instance_class
   web_security_group = module.security-groups.web_security_group
-  rds_username = var.rds_username
-  rds_password = module.secrets-manager.rds_password
+  rds_username       = var.rds_username
+  rds_password       = module.secrets-manager.rds_password
 }
 module "cloudwatch" {
-  source = "../../modules:/cloudwatch:"
-  load_balancer_arn = module.alb.load_balancer_arn
+  source                = "../../modules:/cloudwatch:"
+  load_balancer_arn     = module.alb.load_balancer_arn
   aws_autoscaling_group = module.autoscaling-group.main_autoscaling_group
-  rds_database = module.rds.rds_database
+  rds_database          = module.rds.rds_database
 }
 module "secrets-manager" {
-  source = "../../modules:/secrets-manager:"
-environment = var.environment
-rds_username = var.rds_username
+  source       = "../../modules:/secrets-manager:"
+  environment  = var.environment
+  rds_username = var.rds_username
 }

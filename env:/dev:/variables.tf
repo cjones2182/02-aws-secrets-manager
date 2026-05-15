@@ -29,7 +29,7 @@ variable "igw" {
 }
 variable "environment" {
   description = "environment name"
-  type = string
+  type        = string
 }
 # ====================================================================================
 # security groups 
@@ -74,23 +74,23 @@ variable "desired_capacity" {
 # ====================================================================================
 variable "allocated_storage" {
   description = "disk space for rds"
-  type = number
+  type        = number
 }
 variable "db_name" {
   description = "name of db"
-  type = string
+  type        = string
 }
 variable "engine" {
   description = "engine of db"
-  type = string
+  type        = string
 }
 variable "engine_version" {
   description = "engine version"
-  type = number
+  type        = number
 }
 variable "instance_class" {
   description = "instance class of DB"
-  type = string
+  type        = string
 }
 
 # ====================================================================================
@@ -103,5 +103,5 @@ variable "instance_class" {
 
 variable "rds_username" {
   description = "rds username"
-  type = string
+  type        = string
 }
