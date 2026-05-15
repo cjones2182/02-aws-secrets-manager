@@ -40,6 +40,8 @@ module "autoscaling-group" {
   private_subnets       = module.vpc.private_subnets
   main_alb_target_group = [module.alb.main_alb_target_group]
   environment           = var.environment
+  ec2_instance_profile  = module.secrets-manager.ec2_instance_profile
+
 }
 module "rds" {
   source             = "../../modules:/rds:"

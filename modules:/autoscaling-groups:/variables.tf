@@ -42,3 +42,7 @@ variable "environment" {
   description = "environment name"
   type = string
 }
+variable "ec2_instance_profile" {
+  description = "instance profile for launch template"
+  type = string
+}

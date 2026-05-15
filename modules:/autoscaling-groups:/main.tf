@@ -7,6 +7,10 @@ resource "aws_launch_template" "main" {
   instance_type = var.instance_type
   vpc_security_group_ids = var.web_security_group
   image_id = var.image_id
+
+  iam_instance_profile {
+    name = var.ec2_instance_profile
+  }
 }
 # =========================================================================================
 # asg 

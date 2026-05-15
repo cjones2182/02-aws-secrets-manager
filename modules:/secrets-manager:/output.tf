@@ -11,3 +11,7 @@ output "rds_username" {
   description = "rds username"
   value = var.rds_username
 }
+output "aws_iam_instance_profile" {
+  description = "instance profile for ec2/asg"
+  value = aws_iam_instance_profile.ec2_instance_profile
+}
