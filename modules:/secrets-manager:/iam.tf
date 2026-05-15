@@ -47,4 +47,10 @@ data "aws_iam_policy_document" "rds_login" {
         roles = [aws_iam_role.ec2_role]
         name = "rds-policy-attachment"
     }
-   
+   # =======================================================================================================
+   # ec2 instance profile 
+   # =======================================================================================================
+     resource "aws_iam_instance_profile" "ec2_instance_profile" {
+       name = "ec2-instance-profile"
+       role = aws_iam_role.ec2_role
+     }
